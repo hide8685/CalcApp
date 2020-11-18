@@ -30,24 +30,15 @@ class MainActivity :  AppCompatActivity(), View.OnClickListener  {
             return
         }
 
-        var txt1 = editText1.text
-        var txt2 = editText2.text
-
-
-        var num1 =  Integer.parseInt("$txt1")
-        var num2 =  Integer.parseInt("$txt2")
-
-//        Log.d("kotlog","$num1")
-//        if (num1 == null || num2 == null) {
-//            return
-//        }
+        var num1 = editText1.text.toString().toDouble()
+        var num2 = editText2.text.toString().toDouble()
 
         intent.putExtra("VALUE1",num1)
         intent.putExtra("VALUE2",num2)
 
-        var result = 0
+
+        var result = 0.0
         var fugo = ""
-        var amari = 0
 
         if (v != null) {
             when(v.id){
@@ -65,14 +56,12 @@ class MainActivity :  AppCompatActivity(), View.OnClickListener  {
                 }
                 R.id.div -> {
                     result = num1 / num2
-                    amari = num1 % num2
                     fugo = "÷"
                 }
             }
         }
 
         intent.putExtra("RESULT",result)
-        intent.putExtra("AMARI",amari)
         intent.putExtra("FUGO",fugo)
 
         startActivity(intent)
